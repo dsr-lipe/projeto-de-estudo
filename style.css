@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --text-color: white; 
+  --bg-url: url(./assets/bg-mobile.jpg); /* aqui é o dark mode*/
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-botao-url: url(./assets/lua.svg);
+}
+.light{
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg); /* aqui foi definido o light mode */
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-botao-url: url(./assets/sol.svg);
+
+}
+/* Var() é usado para fazer o sistema de light mode e dark mode da pagina*/
+body {
+  /*background-image: url(./assets/bg-mobile.jpg); /* serve para colocar uma imagem de fundo no site */
+  /*background-repeat: no-repeat; /* isso é para ficar só uma imagem, nao ficar repetindo na tela */
+  /*background-position: top center; /* serve para posicionar a imagem na pagina, e centralizamos ela */
+  /*background-size: cover; /* cobre o espaço em branco na pagina  */
+  /* abaixo esta a forma de como resumir tudo que esta nessa parte de cima! */
+  /* Prioridade de sequencia: background: colo image repeat positio/(size) */
+
+  background: var(--bg-url) no-repeat top center/cover; /* isso é um atalho */
+}
+body * {
+  font-family: "inter", sans-serif; /* para setar a fonte das letras*/
+  color: var(--text-color); /*É usando var(--text-color) para puxar a cor tanto do light quando to dark mode, sem o var(--text-color) ele nao muda */
+}
+#c0 {
+  width: 360px;
+  /* height: 712px; não é nescessario ter altura, pra nao deixar algo fixo, assim deixa algo fluido e o tamanho vai de acordo com o conteudo dentro da caixa */
+  /* border: 1px solid red; */
+  margin: 56px auto 0px;
+
+  /* margin: 56px auto 0px auto; vai colocar margem em sentido horario começando de cima, 56px pra cima, auto pro lado direito, 0px para baixo, auto para o lado esquerdo */
+  /* margin 56px auto 0px; vai colocar 56px em cima, auto dos ambos os lados, 0px em baixo. */
+  /*  margin 56px auto; vai coloar 56px em baixo e em cima, e auto dos ambos lados */
+  padding: 0 24px;
+}
+/* perfil */
+#p0 {
+  text-align: center; /* assim pega o "pai" e coloca um display inline no centro do mesmo jeito que pode deixar na direita e esquerda elemento in line nao consegue colocar (margin:auto)
+  <DIV> É UM ELEMENTO BLOCK, POREM  "IMG" É UM ELEMENTO IN LINE
+  */
+  padding: 24px;
+}
+#p0 img {
+  height: 112px;
+}
+#p0 p {
+  font-weight: 500; /* grossura da fonte */
+  /* font-size:  16px;  não é necessario pq os navegadores ja tem por padrao 16px */
+  line-height: 24px; /*altura da linha*/
+  margin-top: 8px;
+}
+/* botao */
+#switch {
+
+  position: relative; /* limita ele pra propria caixa */
+  width: 64px;
+
+  margin: 4px auto;
+  
+
+}
+#switch button{
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-botao-url) no-repeat center; /* alinhamento de imagem de fundo */
+  border: 0;
+  border-radius: 50%;
+
+
+  /* alinhamento do botao absoluto*/
+  position: absolute; /*permite a alteração de camada */
+  top: 50%; /* foi usado para colocar 50% do topo dentro da caixa assim alinhando no meio junto com o translateY */
+  left: 0;
+  transform: translateY(-50%);  /* colocou ele 50% a cima da  caixa e junto com o top: 50% centralizou ele */
+  z-index: 1; /* muda a camada do objeto */
+}
+
+.light #switch button{
+  right: 0;
+  left: initial;
+
+}
+
+#switch span{
+  display: block; 
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+/* lista / links */
+ul {
+  list-style: none; /* tira os pontos/numeros da lista */
+  display: flex;
+  flex-direction: column; /* deixa lista em coluna */
+  gap: 16px; /* espaçamento entre as colunas */
+  
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center; /* centraliza da esquerda pra direita */
+  justify-content: center; /* centraliza de cima para baixo */
+
+  padding: 16px 24px; /*espaçamento das colunas */
+  background: var(--surface-color); /* cor de fundo das letras */
+  border: 1px solid var(--stroke-color); /* a borda branca em volta da cor de fundo das letras */
+  border-radius: 8px; /*deixa a borda aredondada */
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.2s;
+}
+/* pseudo-selector/passando o mouse em cima*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);/ /* é colocado o var(--text-color) no branco para fazer a troca do modo light mode e do dark mode*/
+}
+ul li a {
+white-space: nowrap; /* deixar tudo na mesma linha */
+}
+/* icones */
+#rs0 { 
+  display: flex; 
+ 
+  justify-content: center; /* deixa eles centralizados */
+
+  padding: 24px 0; /* distancia da caixa com a parte de cima */
+  
+  font-size: 30px; /* tamanho dos icones */
+
+  gap: 32px; /* distancia entre os itens */
+  
+}
+
+#rs0 a {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 16px;
+
+transition: background 0.2s;
+border-radius: 50%;
+}
+
+#rs0 a:hover {
+background: var(--highlight-color);
+}
+
+footer {
+padding: 24px 0;
+text-align: center;
+font-size: 15px;
+font-weight: 500;
+}
