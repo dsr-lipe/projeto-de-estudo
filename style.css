@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --text-color: white; 
+  --text-color: white;
   --bg-url: url(./assets/bg-mobile.jpg); /* aqui é o dark mode*/
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
@@ -12,7 +12,7 @@
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-botao-url: url(./assets/lua.svg);
 }
-.light{
+.light {
   --text-color: black;
   --bg-url: url(./assets/bg-mobile-light.jpg); /* aqui foi definido o light mode */
   --stroke-color: rgba(0, 0, 0, 0.5);
@@ -20,7 +20,6 @@
   --surface-color-hover: rgba(255, 255, 255, 0.2);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-botao-url: url(./assets/sol.svg);
-
 }
 /* Var() é usado para fazer o sistema de light mode e dark mode da pagina*/
 body {
@@ -32,10 +31,13 @@ body {
   /* Prioridade de sequencia: background: colo image repeat positio/(size) */
 
   background: var(--bg-url) no-repeat top center/cover; /* isso é um atalho */
+  height: 100vh;
 }
 body * {
   font-family: "inter", sans-serif; /* para setar a fonte das letras*/
-  color: var(--text-color); /*É usando var(--text-color) para puxar a cor tanto do light quando to dark mode, sem o var(--text-color) ele nao muda */
+  color: var(
+    --text-color
+  ); /*É usando var(--text-color) para puxar a cor tanto do light quando do dark mode, sem o var(--text-color) ele nao muda */
 }
 #c0 {
   width: 100%;
@@ -67,38 +69,35 @@ body * {
 }
 /* botao */
 #switch {
-
   position: relative; /* limita ele pra propria caixa */
   width: 64px;
 
   margin: 4px auto;
-  
-
 }
-#switch button{
+#switch button {
   width: 32px;
   height: 32px;
   background: white var(--switch-botao-url) no-repeat center; /* alinhamento de imagem de fundo */
   border: 0;
   border-radius: 50%;
 
-
   /* alinhamento do botao absoluto*/
   position: absolute; /*permite a alteração de camada */
   top: 50%; /* foi usado para colocar 50% do topo dentro da caixa assim alinhando no meio junto com o translateY */
   left: 0;
-  transform: translateY(-50%);  /* colocou ele 50% a cima da  caixa e junto com o top: 50% centralizou ele */
+  transform: translateY(
+    -50%
+  ); /* colocou ele 50% a cima da  caixa e junto com o top: 50% centralizou ele */
   z-index: 1; /* muda a camada do objeto */
 }
 
-.light #switch button{
+.light #switch button {
   right: 0;
   left: initial;
-
 }
 
-#switch span{
-  display: block; 
+#switch span {
+  display: block;
   width: 64px;
   height: 24px;
   background: var(--surface-color);
@@ -113,7 +112,7 @@ ul {
   display: flex;
   flex-direction: column; /* deixa lista em coluna */
   gap: 16px; /* espaçamento entre as colunas */
-  
+
   padding: 24px 0;
 }
 
@@ -138,42 +137,53 @@ ul li a {
 /* pseudo-selector/passando o mouse em cima*/
 ul li a:hover {
   background: var(--surface-color-hover);
-  border: 1.5px solid var(--text-color);/ /* é colocado o var(--text-color) no branco para fazer a troca do modo light mode e do dark mode*/
+  border: 1.5px solid var(--text-color); /* é colocado o var(--text-color) no branco para fazer a troca do modo light mode e do dark mode*/
 }
 ul li a {
-white-space: nowrap; /* deixar tudo na mesma linha */
+  white-space: nowrap; /* deixar tudo na mesma linha */
 }
 /* icones */
-#rs0 { 
-  display: flex; 
- 
+#rs0 {
+  display: flex;
+
   justify-content: center; /* deixa eles centralizados */
 
   padding: 24px 0; /* distancia da caixa com a parte de cima */
-  
+
   font-size: 30px; /* tamanho dos icones */
 
   gap: 32px; /* distancia entre os itens */
-  
 }
 
 #rs0 a {
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 
-transition: background 0.2s;
-border-radius: 50%;
+  transition: background 0.2s;
+  border-radius: 50%;
 }
 
 #rs0 a:hover {
-background: var(--highlight-color);
+  background: var(--highlight-color);
 }
 
 footer {
-padding: 24px 0;
-text-align: center;
-font-size: 15px;
-font-weight: 500;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* media queries */
+/* media queries só funciona quando tem a linha meta name="viewport" content="width=device-width, initial-scale=1.0" /> no .HTML */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desk-dark.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
