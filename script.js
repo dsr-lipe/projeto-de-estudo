@@ -14,7 +14,7 @@ function toggleMode() {
     img.setAttribute("src", "./assets/avatarlight.png")
     img.setAttribute("alt", "casal tirando uma foto no mar")
   } else {
-    img.setAttribute("src", "./assets/Avatar.png")
+    img.setAttribute("src", "./assets/avatardark.png")
     img.setAttribute(
       "alt",
       "foto de um casal durante seu casamento sentados numa poltrona",
