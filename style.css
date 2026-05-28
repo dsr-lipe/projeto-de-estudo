@@ -31,7 +31,6 @@ body {
   /* Prioridade de sequencia: background: colo image repeat positio/(size) */
 
   background: var(--bg-url) no-repeat top center/cover; /* isso é um atalho */
-  min-height: 100vh;
   min-height: 100dvh;
 }
 body * {
