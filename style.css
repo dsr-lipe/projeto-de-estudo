@@ -38,7 +38,8 @@ body * {
   color: var(--text-color); /*É usando var(--text-color) para puxar a cor tanto do light quando to dark mode, sem o var(--text-color) ele nao muda */
 }
 #c0 {
-  width: 360px;
+  width: 100%;
+  max-width: 580px;
   /* height: 712px; não é nescessario ter altura, pra nao deixar algo fixo, assim deixa algo fluido e o tamanho vai de acordo com o conteudo dentro da caixa */
   /* border: 1px solid red; */
   margin: 56px auto 0px;
