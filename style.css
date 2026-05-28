@@ -89,11 +89,19 @@ body * {
     -50%
   ); /* colocou ele 50% a cima da  caixa e junto com o top: 50% centralizou ele */
   z-index: 1; /* muda a camada do objeto */
+  animation: slide-out 0.3s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /* primeiramente eu coloquei o "right: 0" e o "left: initial" para o botão se mexer quando clicar
+  /*right: 0;
+  left: initial; */
+  animation: slide-button 0.4s forwards;
+  /* substitui todo o comando a cima por animation (comando): (nome da animação que eu criei) (duração de animação) sem o forwards quando eu clicava no botão ele "andava" e quando terminava voltava pro inicio, com o forwards ele mantem na posição final*/
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -185,5 +193,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-button /* @keyframes <nome que voce quiser> */ {
+  /* movendo o botao do "marco" 0 "left: 0" até o marco 50% o outro lado "left: 50%" */
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
